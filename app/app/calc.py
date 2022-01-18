@@ -1,5 +1,3 @@
-
-
 def add(x, y):
-   "add two numbers together"
+    """Add two numbers together and return the result"""
     return x + y
