@@ -120,4 +120,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-AUTH_USER = 'core.User'
+AUTH_USER_MODEL = 'core.User'
