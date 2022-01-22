@@ -57,7 +57,7 @@ class PublicUserApiTests(TestCase):
 
     def test_create_token_for_user(self):
         """Test that a token is created for user"""
-        payload = {'email': 'jonathannb123@hotmail.com', 'password': 'testpass'}
+     payload = {'email': 'jonathannb123@hotmail.com', 'password': 'testpass'}
         create_user(**payload)
         res = self.client.post(TOKEN_URL, payload)
 
@@ -75,7 +75,7 @@ class PublicUserApiTests(TestCase):
 
     def test_create_token_no_user(self):
         """Test that token is not created if user doesnt exist"""
-        payload = {'email': 'jonathannb123@hotmail.com', 'password': 'testpass'}
+     payload = {'email': 'jonathannb123@hotmail.com', 'password': 'testpass'}
         res = self.client.post(TOKEN_URL, payload)
 
         self.assertNotIn('token', res.data)
@@ -93,14 +93,15 @@ class PublicUserApiTests(TestCase):
 
         self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
 
+
 class PrivateUserApiTests(TestCase):
     """Test API requests that require auth"""
 
     def setUp(self):
         self.user = create_user(
-        email='test@hotmail.com',
-        password='testpass',
-        name='name'
+            email='test@hotmail.com',
+            password='testpass',
+            name='name'
         )
         self.client = APIClient()
         self.client.force_authenticate(user=self.user)
