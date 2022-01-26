@@ -130,7 +130,7 @@ class PrivateRecipeApiTests(TestCase):
         }
         res = self.client.post(RECIPES_URL, payload)
 
-        self.assertEqual(res,status_code, status.HTTP_201_CREATED)
+        self.assertEqual(res.status_code, status.HTTP_201_CREATED)
         recipe = Recipe.objects.get(id=res.data['id'])
         tags = recipe.tags.all()
         self.assertEqual(tags.count(), 2)
