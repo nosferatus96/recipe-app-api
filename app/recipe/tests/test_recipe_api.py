@@ -32,7 +32,7 @@ def sample_recipe(user, **params):
     defaults = {
         'title': 'Sample recipe',
         'time_minutes': 10,
-        'price': 5.00
+        'price': 5.00,
     }
     defaults.update(params)
 
@@ -45,7 +45,7 @@ class PublicRecipeApiTests(TestCase):
     def setUp(self):
         self.client = APIClient()
 
-    def test_auth_required(self):
+    def test_required_auth(self):
         """Test that authentication is required"""
         res = self.client.get(RECIPES_URL)
 
@@ -109,7 +109,7 @@ class PrivateRecipeApiTests(TestCase):
         payload = {
             'title': 'Chocolate cheesecake',
             'time_minutes': 30,
-            'price': 500
+            'price': 5.00
         }
         res = self.client.post(RECIPES_URL, payload)
 
@@ -125,7 +125,7 @@ class PrivateRecipeApiTests(TestCase):
         payload = {
             'title': 'Avocado lime cheesecake',
             'tags': [tag1.id, tag2.id],
-            'time_minute': 60,
+            'time_minutes': 60,
             'price': 20.00
         }
         res = self.client.post(RECIPES_URL, payload)
